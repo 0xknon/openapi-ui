@@ -1,0 +1,28 @@
+name: Deployment to Github page
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Checkout code from repo
+        uses: actions/checkout@master
+      - name: Prepare Yarn
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
+      - name: Build OpenAPI doc
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+        

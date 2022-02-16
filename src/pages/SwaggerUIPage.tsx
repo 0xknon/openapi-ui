@@ -18,7 +18,7 @@ const StyledLayout = styled(Layout)`
 `
 
 const StyledMenu = styled(Menu)`
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: #000;
   border-right: 0;
 `
@@ -29,7 +29,7 @@ const StyledSider = styled(Sider)`
 `
 
 const StyledContent = styled(Content)`
-  overflow: scroll;
+  overflow: auto;
 `
 
 const App: React.FC = () => {
